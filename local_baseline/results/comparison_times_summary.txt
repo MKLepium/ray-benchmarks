@@ -1,0 +1,16 @@
+Ray Serve Local Call
+Average time: 1.1196s
+Standard deviation: 0.0998
+
+Ray Serve API Call
+Average time: 1.1626s
+Standard deviation: 0.0963
+
+Ray Actor Call
+Average time: 1.1608s
+Standard deviation: 0.1951
+
+Local Call
+Average time: 0.2460s
+Standard deviation: 0.0160
+
