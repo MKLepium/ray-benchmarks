@@ -7,7 +7,7 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@serve.deployment(num_replicas=1, ray_actor_options={"num_cpus": 1, "num_gpus": 1})
+@serve.deployment(num_replicas=2, ray_actor_options={"num_cpus": 1, "num_gpus": 1})
 @serve.ingress(app)
 class commonFactorClassification:
     def __init__(self, model_id: str = "openai-community/gpt2"): # "openai-community/gpt2" "TinyLlama/TinyLlama-1.1B-Chat-v1.0" "meta-llama/Llama-2-7b-hf"
@@ -44,6 +44,7 @@ Classify the input into one of the following classes: Low-Tech-Savviness, Stress
 Rank the top three classes in descending order. That is the most likely class should be ranked first, the second most likely class should be ranked second, and the third most likely class should be ranked third. Assign confidence scores to each of the predicted classes.
 
 input: {input}"""
+        print("Model loaded successfully", flush=True)
 
     @app.post("/common_factors_classification")
     async def classify(self, http_request: Request) -> str:
@@ -61,18 +62,7 @@ input: {input}"""
 common_factors_model = commonFactorClassification.bind()
 
 # Start the Ray Serve instance
-serve.start(http_options={"http_port": 32165})
+#serve.start(http_options={"http_port": 29172, "http_host": "0.0.0.0"})
 
 # Deploy the model
-handle = serve.run(common_factors_model)
-
-# wait for ctrl-c
-
-import time
-try:
-    print("Server is running. Press Ctrl-C to stop.")
-    while True:
-        # The sleep is not necessary but prevents this loop from consuming too much CPU
-        time.sleep(10)
-except KeyboardInterrupt:
-    print("Server stopping...")
+#handle = serve.run(common_factors_model)

@@ -44,6 +44,7 @@ Classify the input into one of the following classes: Low-Tech-Savviness, Stress
 Rank the top three classes in descending order. That is the most likely class should be ranked first, the second most likely class should be ranked second, and the third most likely class should be ranked third. Assign confidence scores to each of the predicted classes.
 
 input: {input}"""
+        print("Model loaded successfully", flush=True)
 
     @app.post("/common_factors_classification")
     async def classify(self, http_request: Request) -> str:
@@ -59,3 +60,9 @@ input: {input}"""
     
 
 common_factors_model = commonFactorClassification.bind()
+
+# Start the Ray Serve instance
+#serve.start(http_options={"http_port": 29172, "http_host": "0.0.0.0"})
+
+# Deploy the model
+#handle = serve.run(common_factors_model)

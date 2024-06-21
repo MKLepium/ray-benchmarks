@@ -30,7 +30,7 @@ applications:
 
   route_prefix: /
 
-  import_path: 1_rep_serve_api_call:common_factors_model
+  import_path: 2_rep_serve_api_call:common_factors_model
 
   runtime_env:
     pip:
@@ -40,8 +40,8 @@ applications:
   deployments:
 
   - name: commonFactorClassification
-    num_replicas: 1
+    num_replicas: 2
     ray_actor_options:
       num_cpus: 1.0
       num_gpus: 1.0
-# serve deploy --address=http://<head-ip>:8265 common_factors_deploy.yaml 
+# serve deploy --address=http://<headnode-ip>:8265 common_factors_deploy.yaml 
