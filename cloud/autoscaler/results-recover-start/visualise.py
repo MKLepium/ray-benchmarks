@@ -17,9 +17,9 @@ def plot_performance_data(csv_file):
     plt.figure(figsize=(14, 7))
     plt.subplot(2, 1, 1)
     plt.plot(data.index, data['Requests/s'], label='Requests per second', color='blue')
-    plt.title('Total Requests per Second')
-    plt.xlabel('Time')
-    plt.ylabel('Requests/s')
+    plt.title('Total Requests per Second', fontsize=16)
+    plt.xlabel('Time', fontsize=14)
+    plt.ylabel('Requests/s', fontsize=14)
     plt.grid(True)
     
     # Plotting Response Times
@@ -31,9 +31,9 @@ def plot_performance_data(csv_file):
     if 'Total Average Response Time' in data.columns:
         plt.plot(data.index, data['Total Average Response Time'], label='Total Average Response Time', linestyle='--')
 
-    plt.title('Response Times')
-    plt.xlabel('Time')
-    plt.ylabel('Response Time (ms)')
+    plt.title('Response Times', fontsize=16)
+    plt.xlabel('Time', fontsize=14)
+    plt.ylabel('Response Time (ms)', fontsize=14)
     plt.legend()
     plt.grid(True)
 

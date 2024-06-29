@@ -34,10 +34,13 @@ for label in labels:
     if label in times:
         plt.plot(times[label], label=label)
 
-plt.xlabel('Iteration')
-plt.ylabel('Time (s)')
-plt.title('Time taken for 1000 iterations across different setups')
-plt.legend()
+plt.xlabel('Iteration', fontsize=14)
+plt.ylabel('Time (s)', fontsize=14)
+plt.title('Time taken for 1000 iterations across different setups', fontsize=16)
+plt.xticks(fontsize=12) 
+plt.yticks(fontsize=12)  
+plt.legend(fontsize=12) 
+
 plt.savefig('comparison_times.png')  # Save the figure to file
 
 # write out the average times, standard deviation and confidence intervals
