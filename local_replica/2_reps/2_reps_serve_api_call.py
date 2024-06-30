@@ -61,7 +61,7 @@ input: {input}"""
 common_factors_model = commonFactorClassification.bind()
 
 # Start the Ray Serve instance
-serve.start(http_options={"http_port": 8000})
+serve.start(http_options={"http_port": 8000, "host": "0.0.0.0"})
 
 # Deploy the model
 handle = serve.run(common_factors_model)
